@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 토글 스위치 구현하기 - css </title>
+    <style>
+        .toggleSwitch{
+            width: 6rem; height: 3rem;
+            display: block;
+            position: relative;
+            border-radius: 2rem;
+            background-color: #fff;
+            box-shadow: 0 0 1rem 3px rgba(173, 173, 173, 0.5);
+            cursor: pointer;
+        }
+        /* 토글 버튼 */
+        .toggleSwitch .toggleButton{
+            /* 버튼은 토글보다 작아야함 */
+            width: 2.6em; height: 2.6em;
+            position: absolute; top: 50%; left: .2rem;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            background: #000;
+        }
+
+        /* 체크박스가 체크될 시 변경되는 요소 */
+        #toggle:checked~ .toggleSwitch{
+            background: #000;
+            url
+        }
+        #toggle:checked ~ .toggleSwitch .toggleButton{
+            /* 100% >끝위치, 2.8em > 버튼크기 */
+            left: calc(100% - 2.8rem);
+            background: #fff;
+        }
+        .toggleSwitch, .toggleButton {
+            transition: all 0.2s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <!-- <input type="checkbox" id="toggle" hidden> -->
+    <input type="checkbox" id="toggle" hidden>
+    <label for="toggle" class="toggleSwitch">
+        <span class="toggleButton" ></span>
+    </label>
+    <!-- https://gurtn.tistory.com/161 -->
+    <!-- 여러 개의 toggle를 관리하기 위해서 CSS만을 사용하게 되면, 토글 개수의 따른 checkbox를 만들어야 하는 단점이 존재합니다. -->
+    <script>
+        const $toggle = document.querySelector('.toggleSwitch');
+
+        $toggle.onclick = () => {
+            $toggle.classList.toggle('active');
+        }
+
+    </script>
+</body>
+</html>

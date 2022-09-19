@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 300vw;
+            transition: transform 0.5s;
+            /* 제이쿼리로 안하는 이유는 이게 더 성능이 좋아서, 성능떄문에 */
+            /* vw : viewport width */
+            /* transform: translate(-100vw); */
+        }  
+        .inner{
+            width: 100vw;  
+            float: left;
+        }
+        .inner img{ 
+            width: 100%;
+            object-fit: contain;
+        }
+
+    </style>
+</head>
+<body>
+    <div style="overflow: hidden;">
+        <div class="container">
+            <div class="inner"> 
+                <img src="./img/ii1.jpg" alt=""> 
+            </div>
+            <div class="inner"> 
+                <img src="./img/ii2.jpg" alt=""> 
+            </div>
+            <div class="inner"> 
+                <img src="./img/ii3.jpg" alt=""> 
+            </div>
+        </div>
+    </div>
+
+    <button class="btn1">1</button>
+    <button class="btn2">2</button>
+    <button class="btn3">3</button>
+
+    <script>
+        // 커튼2를 누르면
+        document.querySelector('.btn2').addEventListener('click',function(){
+            document.querySelector('.container').style.transform = 'translate(-100vw)';
+        });
+
+        document.querySelector('.btn3').addEventListener('click',function(){
+            document.querySelector('.container').style.transform = 'translate(-200vw)';
+        });
+
+        document.querySelector('.btn1').addEventListener('click',function(){
+            document.querySelector('.container').style.transform = 'translate(0)';
+        });
+
+    </script>
+</body>
+</html>

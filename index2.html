@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/style02.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <title> header layout </title>
+    <style>
+         .on{ transform: rotate(180deg);}
+
+
+        #intro {position: relative;}
+        ul.h_circle { }
+        ul.h_circle li{
+            width: 100px; height: 100px; 
+            /* background: #ff0; border-radius: 50%; */
+         }
+         /* .om 넣어야 함, 화살표 방향 바뀌게 */
+        .sub{ 
+            background:rgb(250, 250, 197);
+            display: none;
+            }
+        .sub > li > a{
+            color: #333;
+            line-height: 20px;
+        }
+
+        .dl{ 
+            /* text-align: center; */
+            /* margin: 0 auto; */
+            position: relative; left: 0;
+            width: 10px;
+            background:rgb(255, 241, 47);
+   }
+
+
+    </style>
+    <script>
+        $(function(){
+            $('.navbar_toggleBtn').click(function(){
+                $('.navbar_menu').slideToggle();
+                $('.navbar_links').slideToggle();
+            });
+            $('.navbar_menu > li> a').click(function(){
+                $('.sub').slideToggle();
+            });
+
+            $('.ps').delay(1000).animate({'width':'70%'},2500,'linear');
+            // $('.ai').delay(1000).animate({'width':'300px'},2500,'linear').css('background','rgb(255, 241, 47)').delay(1000);
+            $('.ai').delay(1000).animate({'width':'70%'},2500,'linear');
+            $('.html').delay(1000).animate({'width':'70%'},2500,'linear');
+            $('.css').delay(1000).animate({'width':'70%'},2500,'linear');
+            $('.js').delay(1000).animate({'width':'60%'},2500,'linear');
+            $('.jq').delay(1000).animate({'width':'60%'},2500,'linear');
+            $('.react').delay(1000).animate({'width':'30%'},2500,'linear');
+
+            $('#qna dl > dt').click(function(){
+                
+                // $('#qna dl> dd').show();
+               
+                // $('#qna dl> dd').slideUp();
+                // $('#qna dl dd').find('i.fa-solid').toggleClass('on');
+
+                $(this).next().slideToggle();
+                // $(this).next().Show();
+                
+                $(this).next().css('border-top','1px solid #000');
+                
+                $(this).find('i.fa-solid').mouseover().toggleClass('on');
+                // $('#qna i.fa-solid').animate({'rotate':'180deg'},100);
+
+                return false;
+            });
+
+            // work 구간
+            $('.gallery_lnb01>ul>li:first-child').find('a').addClass('gallery_lnb_act');
+            
+            $('.gallery_lnb01>ul>li').click(function(){
+              // 기존에 적용된 클래스 서식 제거
+              $('$gallery_lnb01 a').remove('gallery_lnb_act');
+              // 2. 내가 선택한 목록에 자식만 a서식 적용
+              $(this).find('a').addClass('gallery_lnb_act');
+            });
+
+            // 각각 메뉴를 클릭시 해당하는 작품 사진만 서서히 보이게 한다.
+            const gtotal = $('.gallery_lnb01 li:first-child a');
+            const gproject = $('.gallery_lnb01 li:nth-child(2) a');
+            const gprocess = $('.gallery_lnb01 li:nth-child(3) a');
+            const gdesign = $('.gallery_lnb01 li:nth-child(4) a');
+            const gcoding = $('.gallery_lnb01 li:last-child a');
+
+            gtotal.click(function(){
+                $('.total').hide().show();
+            });
+
+            gproject.click(function(){
+              $('.total').hide();
+              $('.project').fadeIn();
+            });
+
+            gprocess.click(function(){
+              $('.total').hide();
+              $('.process').fadeIn();
+            });
+            gdesign.click(function(){
+              $('.total').hide();
+              $('.design').fadeIn();
+            });
+
+            gcoding.click(function(){
+              $('.total').hide();
+              $('.coding').fadeIn();
+            });
+
+            //1. 갤러리 목록 안에 있는 a 요소 변수 선언
+            const g_list = $('.gallery_list01 > li > a');
+
+            g_list.mouseenter(function(){
+              $(this).find('span').stop().animate({'bottom':'0'},400);
+            });
+            g_list.mouseleave(function(){
+              $(this).find('span').stop().animate({'bottom':'-40px'},400);
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<!-- https://velog.io/@minbrother/%EB%B0%98%EC%9D%91%ED%98%95-%ED%97%A4%EB%8D%94-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EA%B8%B0%EB%B3%B8 -->
+<div id="header">
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <!-- <i class="fa-solid fa-person-walking-luggage"></i> -->
+            <a href="#"> YEJI PORTFOLIO </a>
+        </div>
+
+        <ul class="navbar_menu">
+            <label for="toggle" class="c_btn">
+                <img src="./img/closebk.png" alt="">
+            </label>
+           <li><a href="#"> Home </a><i class="fas fa-angle-down"></i>
+                <ul class="sub">
+                    <li><a href="#" title="서브메뉴"> sub </a></li>
+                    <li><a href="#" title="서브메뉴"> sub </a></li>
+                </ul> 
+           </li> 
+           <li><a href="#"> About </a><i class="fas fa-angle-down"></i>
+                <ul class="sub">
+                    <li><a href="#" title="서브메뉴"> sub </a></li>
+                    <li><a href="#" title="서브메뉴"> sub </a></li>
+                </ul> 
+           </li> 
+           <li><a href="#"> Transition </a><i class="fas fa-angle-down"></i>
+                <ul class="sub">
+                    <li><a href="#" title="서브메뉴"> sub </a></li>
+                    <li><a href="#" title="서브메뉴"> sub </a></li>
+                </ul>  
+           </li> 
+           <li><a href="#"> Design </a><i class="fas fa-angle-down"></i>
+                <ul class="sub">
+                    <li><a href="#" title="서브메뉴"> sub </a></li>
+                    <li><a href="#" title="서브메뉴"> sub </a></li>
+                </ul> 
+           </li> 
+           <li><a href="#"> Pulishing </a><i class="fas fa-angle-down"></i>
+                <ul class="sub">
+                    <li><a href="#" title="서브메뉴"> sub </a></li>
+                    <li><a href="#" title="서브메뉴"> sub </a></li>
+                </ul> 
+           </li> 
+           <li><a href="#"> Front-end </a><i class="fas fa-angle-down"></i>
+                <ul class="sub">
+                    <li><a href="#" title="서브메뉴"> sub </a></li>
+                    <li><a href="#" title="서브메뉴"> sub </a></li>
+                </ul> 
+            </li> 
+        </ul>
+        <ul class="navbar_links">
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-instagram"></i>
+        </ul>
+        <a href="#" class="navbar_toggleBtn"><i class="fas fa-bars"></i></a>
+    </nav>
+
+    </div>
+</div>
+
+<!-- 원형 -->
+<nav id="m_nav">
+    <ul>
+      <li><span class="num">1</span><a href="#intro" title="Home"> Home </a></li>
+      <li><span class="num">2</span><a href="#test" title="About"> About </a></li>
+      <li><span class="num">3</span><a href="#event" title="Transition"> Transition </a></li>
+      <li><span class="num">4</span><a href="#event" title="Design"> Design </a></li>
+      <li><span class="num">5</span><a href="#buy" title="Publishing"> Publishing </a></li>
+      <li><span class="num">6</span><a href="#cs" title="Front-end"> Front-end </a></li>
+    </ul>
+  </nav>
+
+<!-- <nav class="gnb">
+    <ul>
+        <li><a href="#intro" title=""> Home </a></li>
+        <li><a href="#aboutMe" title=""> About </a></li>
+        <li><a href="#transition" title=""> Transition </a></li>
+        <li><a href="#design" title=""> Design </a></li>
+        <li><a href="#publishing" title=""> Publishing</a></li>
+        <li><a href="#frontEnd" title=""> Front-end </a></li>
+    </ul>
+</nav> -->
+
+<main>
+    <section id="intro">
+        <div class="mainSlide">
+            <ul>
+                <li><a href=""> <img src="#" alt=""> </a></li>
+                <li><a href=""> <img src="#" alt=""> </a></li>
+            </ul>
+        </div>
+        
+    </section>
+
+    <section id="aboutMe">
+        <h2> <span class="txtPoint">A</span>bout Me </h2>
+        <div class="box01">
+            <article class="about_imgBox">
+                <img src="./img/m1.jpg" alt="" >
+                <!-- <img src="#" alt="" > -->
+                <h3> 안녕하세요. 조예지 입니다.</h3>
+                <p> </p>
+            </article>
+            <article class="about_txtBox">
+                <h3> 조예지 </h3>
+                <p> Tel : +82 10 8220 9370 </p>
+                <p> 1994.04.27 </p>
+                <p> E : wldi1097@naver.com </p>
+
+                <br/>
+
+                <div id="program">
+                    <h3> 프로그램 </h3>
+                    <dl> <!-- transform 으로 효과-->
+                        <dt>포토샵</dt>
+                        <dd class="dl ps"> &nbsp; </dd>
+
+                        <dt>일러스트</dt>
+                        <dd class="dl ai"> &nbsp; </dd>
+
+                        <dt> HTML </dt>
+                        <dd class="dl html"> &nbsp; </dd>
+
+                        <dt> CSS </dt>
+                        <dd class="dl css"> &nbsp; </dd>
+
+                        <dt> javascript </dt>
+                        <dd class="dl js"> &nbsp; </dd>
+
+                        <dt> jQuery </dt>
+                        <dd class="dl jq"> &nbsp; </dd>
+
+                        <dt> React </dt>
+                        <dd class="dl react"> &nbsp; </dd>
+                    </dl>
+                </div>
+
+                <br/>
+
+                <h3> EDUCATION </h3>
+                <p> Tel : +82 10 8220 9370 </p>
+            </article>
+         </div>
+    </section>
+
+    <section id="transition">
+        <h2> <span class="txtPoint">T</span>ransition </h2>
+        <p class="plus"> HTML&CSS의 Transition 기능을 사용한 Hover effect 작업물 </p>
+        <div>
+        <figure class="transition1">
+            <img src="./img/hovereffect01.png" alt="hoverEffect">
+            <h4> Galaxy </h4>
+            <ul>
+                <li></li>
+                <li></li>
+            </ul>
+            <p>
+                The Galaxy consists of 100 bilion stars<br>
+                We imagine that
+            </p>
+        </figure>
+        <figure class="transition2">
+            <img src="./img/hovereffect02.png" alt="hoverEffect2">
+            <h4> Paris </h4>
+            <p>
+                This article is about the capitalof<br>
+                We always miss those days
+            </p>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </figure>
+        <figure class="transition3">
+            <img src="./img/hovereffect03.png" alt="hoverEffect3">
+            <h4> Childhood </h4>
+            <p>
+                Everyone has childhood<br>
+                We always miss those days
+            </p>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </figure>
+        </div>
+    </section>
+ 
+    <section id="design">
+        <h2>  <span class="txtPoint">D</span>esign </h2>
+        <article>
+          <div>
+            <h4> 홈페이지 리뉴얼 작업 </h4>
+            <img src="./img/dvimg.jpg" alt=""> 
+            <button> 기획서 </button>
+            <button> 시안작업 </button>
+          </div>
+          <div>
+            <h4> 베스킨러빈스 </h4>
+            <img src="./img/dvimg.jpg" alt=""> 
+            <button> 기획서 </button>
+            <button> 시안작업 </button>
+          </div>
+          <!-- 직접 작업한 배너 슬라이드 구현
+          클릭하면 이미지를 팝업으로 보여줄지 말지는 추후 결정  -->
+        </article>
+    </section>
+
+    <section id="work">
+      <h2> <span class="txtPoint">W</span>ork </h2>
+      <article id="gallery01">
+        <nav class="gallery_lnb01"> <!-- gnb는 메인할때-->
+          <ul>
+            <li><a href="javascript:void(0);" title="전체보기" > 전체보기 </a></li>
+            <li><a href="javascript:void(0);" title="프로젝트" > 프로젝트 </a></li>
+            <li><a href="javascript:void(0);" title="설계"> 설계 </a></li>
+            <li><a href="javascript:void(0);" title="디자인"> 디자인 </a></li>
+            <li><a href="javascript:void(0);" title="개발" > 개발 </a></li>
+          </ul>
+        </nav>
+    
+        <ul class="gallery_list01">
+          <li class="total project">
+            <a href="javascript:void(0);" title="프로젝트"><img src="./img/img1.jpg" alt=""><span> 프로젝트 </span></a>
+          </li>
+          <li class="total design">
+            <a href="javascript:void(0);" title="디자인"><img src="./img/img2.jpg" alt=""><span> 디자인 </span>
+            </a>
+          </li>
+          <li class="total process">
+            <a href="javascript:void(0);" title="설계"><img src="./img/img3.jpg" alt=""><span> 설계 </span></a>
+          </li>
+          <li class="total design"><a href="#" title="디자인"><img src="./img/img4.jpg" alt=""><span> 디자인 </span></a>
+          </li>
+          <li class="total project">
+            <a href="javascript:void(0);" title="프로젝트"><img src="./img/img5.jpg" alt=""><span> 프로젝트 </span></a>
+          </li>
+          <li class="total process">
+            <a href="javascript:void(0);#" title="설계"><img src="./img/img6.jpg" alt=""><span> 설계 </span></a>
+          </li>
+          <li class="total design">
+            <a href="javascript:void(0);" title="디자인"><img src="./img/img7.jpg" alt=""><span> 디자인 </span></a>
+          </li>
+          <li class="total design">
+            <a href="javascript:void(0);" title="디자인"><img src="./img/img8.jpg" alt=""><span> 디자인 </span></a>
+          </li>
+          <li class="total coding">
+            <a href="javascript:void(0);" title="개발"><img src="./img/img9.jpg" alt=""><span> 개발 </span></a>
+          </li>
+          <li class="total project">
+            <a href="javascript:void(0);" title="프로젝트"><img src="./img/img10.jpg" alt=""><span> 프로젝트</span></a>
+          </li>
+          <li class="total coding">
+            <a href="javascript:void(0);" title="개발"><img src="./img/img11.jpg" alt=""><span> 개발 </span></a>
+          </li>
+          <li class="total coding">
+            <a href="javascript:void(0);" title="개발"><img src="./img/img12.jpg" alt=""><span> 개발 </span></a>
+          </li>
+        </ul>
+    <!-- 해당부분 이미지 및 직압 산텍 후 팝업 작업 필수, 12일꺼 참고하기 -->
+      </article>
+    </section>
+
+    <!-- <section id="publishing">
+        <h2> Publishing & Front-end </h2>
+        <p> javascript, jQuery, React 를 사용한 다양한 작업물</p>
+        
+            <div>
+            <figure class="coding01">
+                <img src="./img/hovereffect01.png" alt="todolist">
+                <h4> 일정관리 </h4>
+                <p class="plus">
+                    To do list <br>
+                    React를 활용하여 일정관리
+                </p>
+                <button class="todolist"> <a href="#">바로가기 </a> </button>
+            </figure>
+            <figure class="coding02">
+                <img src="./img/outback.png" alt="outback">
+                <h4> 반응형 아웃백 </h4>
+                <p class="plus">
+                    아웃백 홈페이지 <br>
+                    반응형 개인 작업
+                </p>
+                <button> <a href="#">바로가기 </a> </button>
+            </figure>
+            <figure class="coding03">
+                <img src="./img/apple.png" alt="apple">
+                <h4> 애플 아이폰 반응형 웹 프로젝트 </h4>
+                <p class="plus">
+                    애플 홈페이지 <br/>
+                    반응형 개인작업 
+                </p>
+                <button> <a href="#">바로가기 </a> </button>
+            </figure>
+        </div>
+        
+    </section> -->
+    
+    <section id="gallery">
+        <div class="g11"></div>
+        <article>
+          <h2> Publishing & Front-end </h2>
+          <p> javascript, jQuery, React 를 사용한 다양한 작업물</p>
+          <div class="girl">
+            <figure>
+              <a href="#" title="">
+                <img src="./img/outback02.jpg" alt="">
+              </a>
+              <figcaption>
+                <a href="#" title="">
+                  <h6> OUTBACK </h6>
+                  <p> 반응형 웹 프로젝트 개인 작업물 </p>
+                  <span>바로가기</span>
+                </a>
+              </figcaption>
+            </figure>
+      
+            <figure>
+              <a href="#" title="">
+                <img src="./img/apple04.jpg" alt="">
+              </a>
+              <figcaption>
+                <a href="#" title="">
+                  <h6> APPLE </h6>
+                  <p> 반응형 웹 프로젝트 개인 작업물 </p>
+                  <span> 바로가기 </span>
+                </a>
+              </figcaption>
+            </figure>
+      
+            <figure>
+              <a href="#" title="">
+                <img src="./img/4.png" alt="">
+              </a>
+              <figcaption>
+                <a href="#" title="">
+                  <h6>인쇄광고</h6>
+                  <p>2020</p>
+                </a>
+              </figcaption>
+            </figure>
+      
+            <figure>
+              <a href="#" title="">
+                <img src="./img/5.png" alt="">
+              </a>
+              <figcaption>
+                <a href="#" title="">
+                  <h6>인쇄광고</h6>
+                  <p>2019</p>
+                </a>
+              </figcaption>
+            </figure>
+      
+            <figure>
+              <a href="#" title="">
+                <img src="./img/6.jpg" alt="">
+              </a>
+              <figcaption>
+                <a href="#" title="">
+                  <h6>인쇄광고</h6>
+                  <p>2018</p>
+                </a>
+              </figcaption>
+            </figure>
+      
+            <figure>
+              <a href="#" title="">
+                <img src="./img/7.png" alt="">
+              </a>
+              <figcaption>
+                <a href="#" title="">
+                  <h6>TV광고</h6>
+                  <p>2018</p>
+                  <span>영상보기</span>
+                </a>
+              </figcaption>
+            </figure>
+      
+            <figure>
+              <a href="#" title="">
+                <img src="./img/8.jpg" alt="">
+              </a>
+              <figcaption>
+                <a href="#" title="">
+                  <h6>프로모션</h6>
+                  <p>2020</p>
+                  <span>영상보기</span>
+                </a>
+              </figcaption>
+            </figure>
+      
+            <figure>
+              <a href="#" title="">
+                <img src="./img/8.jpg" alt="">
+              </a>
+              <figcaption>
+                <a href="#" title="">
+                  <h6>프로모션</h6>
+                  <p>2017</p>
+                  <span>영상보기</span>
+                </a>
+              </figcaption>
+            </figure>
+      
+          </div>
+        </article>
+      </section>
+
+    <!-- <section id="frontEnd">
+        <h2> Front-end </h2>
+        <article>
+            
+        </article>
+    </section> -->
+            <!-- Q&A -->
+    <section id="qna">
+      
+        <article>
+          <h2> Q&A </h2>
+            <dl> 
+                <dt>간단한 자기소개를 한다면? <i class="fa-solid fa-angle-down"></i></dt>
+                <dd> 주의사항입니다.<br>
+                    Lorem ipsum dolor sit amet consectetur 
+                </dd>
+            
+                <dt> 성격 장 단점 <i class="fa-solid fa-angle-down"></i></dt>
+                <dd> 고객님의 리뷰 입니다.<br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo  maiores quasi perspiciatis ipsam rem odit nulla ad totam aliquid     cupiditate libero omnis, obcaecati eum consequatur tenetur nihil non    quod incidunt. </dd>
+                
+                <dt> 간단한 경력 기술 소개 <i class="fa-solid fa-angle-down"></i></dt>
+                <dd> 고객님의 리뷰 입니다.<br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo  maiores quasi perspiciatis ipsam rem . </dd>
+                
+                <dt> 입사 후 포부 <i class="fa-solid fa-angle-down"></i></dt>
+                <dd> 질문과 응답 </dd>
+            </dl>
+      </article> 
+      <article id="qnaSlide">
+        <!-- 슬라이드 -->
+        <div class="q_list">
+          <img src="./img/qna01.jpg" alt="">
+          <img src="./img/qna02.jpeg" alt="">
+          <img src="./img/qna03.jpg" alt="">
+        </div>
+        <!-- 원 btn -->
+        <div class="q_list_c_btn">
+          <ul>
+            <li class="on01"> &nbsp; </li>
+            <li> &nbsp; </li>
+            <li> &nbsp; </li>
+          </ul>
+        </div>
+
+
+      </article>
+    </section>
+</main>
+
+
+  <!-- 푸터영역 -->
+  <footer class="clear">
+    <div class="f_inner">
+      <div id="b_box">
+
+      </div>
+      <h2><a href="index.html" title="하단로고"><img src="./images/f_logo-hyundai.png" alt="푸터로고"></a></h2>
+      <nav class="f_lnb">
+        <ul>
+          <li><a href="#" title="이용약관">이용약관</a></li>
+          <li><a href="#" title="개인정보 처리방침">개인정보 처리방침</a></li>
+          <li><a href="#" title="저작권안내">저작권안내</a></li>
+          <li><a href="#" title="공동인증서 안내">공동인증서 안내</a></li>
+          <li><a href="#" title="현대자동차 홈페이지">현대자동차 홈페이지</a></li>
+        </ul>
+      </nav>
+      <address>
+        사업자등록번호 : 101-81-09147  &nbsp;통신판매업신고번호 : 2002-01546  &nbsp;대표이사 : 장재훈
+        &nbsp;주소 : 서울시 서초구 헌릉로 12 &nbsp;호스팅서비스 제공 : 현대오토에버(주)<br>
+        copyright&copy; hyundai motor company, all rights reserved.
+      </address>
+    </div>
+  </footer>
+
+<script>
+    document.querySelector('.btn2').addEventListener('click',function(){
+        document.querySelector('.container01').style.transform = 'transform: translate(-100vw)';
+    })
+</script>
+</body>
+</html>

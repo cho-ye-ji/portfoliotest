@@ -1,0 +1,41 @@
+*{
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: darkslateblue;
+}
+.wrap{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    color: #fff;
+    text-align: center;
+}
+.material-icons{ font-size: 10rem;}
+.lg-text{ 
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.sm-text{ font-size: 1.5rem;}
+
+#dynamic{
+    position: relative;
+    display: inline-block;
+}
+#dynamic::after{
+    content: '';
+    display: block;
+    position: absolute; top: 0; right: -10px;
+    width: 4px;
+    height: 100%;
+    background: #fff;
+}
+/* 자바효과 액티브가 없으면 에프터 가상이 보이지 않게 */
+/* 글자수에 따라서 다르게 보이기 위해서  */
+#dynamic.active::after{
+    display: none;
+}
